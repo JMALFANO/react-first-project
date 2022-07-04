@@ -31,6 +31,10 @@
   transition: 500ms;
 }
 
+.navbar li a {
+  text-decoration: none;
+}
+
 .title {
   margin-left: 50px;
   line-height: 75px;
@@ -158,4 +162,9 @@
 
 .form-valid {
   background-color: green !important;
+}
+
+.navactived{
+  font-weight: bold;
+  color: orange
 }

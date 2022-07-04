@@ -13,11 +13,11 @@ export const AppRoute = () => {
       <div className="layout">
         <main className="container">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />}  />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/curriculum" element={<Curriculum />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="*" element={<h1>error</h1>} />
+            <Route path="*" element={<span>La página ingresada no existe :(</span>} />
           </Routes>
         </main>
       </div>

@@ -9,10 +9,10 @@ export const Header = () => {
       <nav className="nav">
         <ul className="navbar">
           <li>
-            <NavLink to="/">Inicio</NavLink>
+            <NavLink to="/" className={({isActive}) => isActive ? "navactived" : ""}>Inicio</NavLink>
           </li>
           <li>
-            <NavLink to="/portfolio">Portafolio</NavLink>
+            <NavLink to="/portfolio" className={({isActive}) => isActive ? "navactived" : ""}>Portafolio</NavLink>
           </li>
           <li>
             <a
@@ -24,10 +24,10 @@ export const Header = () => {
             </a>
           </li>
           <li>
-            <NavLink to="/curriculum">Curriculum</NavLink>
+            <NavLink to="/curriculum" className={({isActive}) => isActive ? "navactived" : ""}>Curriculum</NavLink>
           </li>
           <li>
-            <NavLink to="/contact">Contacto</NavLink>
+            <NavLink to="/contact" className={({isActive}) => isActive ? "navactived" : ""}>Contacto</NavLink>
           </li>
         </ul>
       </nav>
