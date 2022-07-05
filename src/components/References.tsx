@@ -3,16 +3,16 @@ import { saveLocalStorage, readLocalStorage } from "../helpers/helper";
 
 import { Form, Field, ErrorMessage, Formik } from "formik";
 
-export default function Contact() {
+export default function References() {
   const [listContacts, setListContacts] = useState([]);
   const [formSuccess, setFormSuccess] = useState(false);
 
   useEffect(() => {
-    setListContacts(readLocalStorage("contact"));
+    setListContacts(readLocalStorage("reference"));
   }, []);
 
   const handleSubmitData = (reference: any) => {
-    saveLocalStorage("contact", reference);
+    saveLocalStorage("reference", reference);
   };
 
   return (
@@ -21,8 +21,7 @@ export default function Contact() {
         initialValues={{
           id: new Date().getTime(),
           name: "",
-          mail: "",
-          reference: "job",
+          reference: "university",
           message: "",
         }}
         validate={(values) => {
@@ -30,9 +29,6 @@ export default function Contact() {
 
           if (!values.name) {
             errors.name = "El nombre es requerido";
-          }
-          if (!values.mail) {
-            errors.mail = "El mail es requerido";
           }
           if (!values.reference) {
             errors.reference = "Seleccione un motivo de contacto";
@@ -53,7 +49,7 @@ export default function Contact() {
       >
         {({ errors }) => (
           <Form className="form">
-            <h2 className="mb-3 font-bold"> Contacto </h2>
+            <h2 className="mb-3 font-bold"> Referencias </h2>
             <div className="mt-10 sm:mt-0">
               <div className="md:grid md:grid-cols-3 md:gap-6">
                 <div className=" mt-5 md:mt-0 md:col-span-2">
@@ -70,6 +66,7 @@ export default function Contact() {
                           <Field
                             type="text"
                             name="name"
+                            autoComplete="given-name"
                             className="h-8 mt-1.5 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
                           <ErrorMessage
@@ -83,38 +80,16 @@ export default function Contact() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-3">
-                          <label
-                            htmlFor="mail"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            Mail
-                          </label>
-                          <Field
-                            type="mail"
-                            name="mail"
-                            className="h-8 mt-1.5 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                          />
-                          <ErrorMessage
-                            name="mail"
-                            component={() => (
-                              <div className="mt-1 text-red-500 text-xs">
-                                {errors.mail}
-                              </div>
-                            )}
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
                           <label className="block text-sm font-medium text-gray-700">
-                            Motivo de contacto
+                            Referencia
                           </label>
                           <Field
                             as="select"
                             name="reference"
                             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                           >
-                            <option value="job">Oportunidad laboral</option>
-                            <option value="help">Ayuda</option>
-                            <option value="other">Otro</option>
+                            <option value="university">Universidad</option>
+                            <option value="job">Trabajo</option>
                           </Field>
                           <ErrorMessage
                             name="reference"

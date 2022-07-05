@@ -1,5 +1,10 @@
 import React from "react";
 
 export const Portfolio = () => {
-  return <div className="text-sm font-medium text-gray-900">Portfolio</div>;
+  return (
+    <>
+      <h2 className="font-bold">Ultimos desarrollos realizados</h2>
+      <img src="/images/portfolio.png" alt="portfolio"></img>
+    </>
+  );
 };
