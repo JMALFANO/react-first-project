@@ -6,6 +6,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import { Portfolio } from "../components/Portfolio";
 import References from "../components/References";
+import NotFound from "../components/NotFound";
 export const AppRoute = () => {
   return (
     <BrowserRouter>
@@ -20,7 +21,7 @@ export const AppRoute = () => {
             <Route path="contact" element={<Contact />} />
             <Route
               path="*"
-              element={<span>La página ingresada no existe :(</span>}
+              element={<NotFound/>}
             />
           </Routes>
         </div>
