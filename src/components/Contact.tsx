@@ -137,7 +137,7 @@ export default function Contact() {
                             as="textarea"
                             name="message"
                             placeholder="Ingrese su mensaje, intente ser lo más claro posible."
-                            className="h-8 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="h-8 p-1.5 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
                           <ErrorMessage
                             name="message"
@@ -169,6 +169,27 @@ export default function Contact() {
           </Form>
         )}
       </Formik>
+      <div>
+        {listContacts.length ? (
+          <h2 className="font-bold mt-5 mb-2">Últimos comentarios enviados:</h2>
+        ) : (
+          <h2 className="font-bold mt-5">No hay comentarios aún.</h2>
+        )}
+
+        {listContacts != null &&
+          listContacts.map((contact: any) => {
+            return (
+              <article
+                className="w-2/5
+               bg-gray-100 rounded-lg p-2"
+                key={contact.id}
+              >
+                <span className="font-bold">{contact.name}</span>
+                <p>{contact.message}</p>
+              </article>
+            );
+          })}
+      </div>
     </>
   );
 }
