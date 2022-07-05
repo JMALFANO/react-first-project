@@ -70,7 +70,7 @@ export default function Contact() {
                           <Field
                             type="text"
                             name="name"
-                            className="h-8 mt-1.5 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="p-2 h-8 mt-1.5 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
                           <ErrorMessage
                             name="name"
@@ -92,7 +92,7 @@ export default function Contact() {
                           <Field
                             type="mail"
                             name="mail"
-                            className="h-8 mt-1.5 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="p-2 h-8 mt-1.5 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
                           <ErrorMessage
                             name="mail"
@@ -159,7 +159,7 @@ export default function Contact() {
                       <input
                         type="submit"
                         value="Enviar"
-                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-400 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       />
                     </div>
                   </div>
@@ -180,7 +180,7 @@ export default function Contact() {
           listContacts.map((contact: any) => {
             return (
               <article
-                className="w-2/5
+                className="w-2/5 mb-1
                bg-gray-100 rounded-lg p-2"
                 key={contact.id}
               >

@@ -4,7 +4,7 @@ export const Home = () => {
   return (
     <>
       <p>
-        ¡Hola! Soy <strong>Juan Martín ALFANO</strong>
+        ¡Hola! Soy <strong>Juan Martín ALFANO</strong>.
         <br />
         <strong>Licenciado en Tecnología de la Información</strong> recibido en
         la&nbsp;

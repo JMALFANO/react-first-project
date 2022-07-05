@@ -5,10 +5,10 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { NavLink } from "react-router-dom";
 
 const navigation = [
-  { name: "Inicio", href: "/", current: true },
-  { name: "Portfolio", href: "/portfolio", current: false },
-  { name: "Referencias", href: "/references", current: false },
-  { name: "Contacto", href: "/contact", current: false },
+  { name: "Inicio", href: "/" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Referencias", href: "/references" },
+  { name: "Contacto", href: "/contact" },
 ];
 
 function classNames(...classes: any) {
@@ -46,13 +46,11 @@ export default function Header() {
                           <NavLink
                             key={item.name}
                             to={item.href}
-                            className={classNames(
-                              item.current
-                                ? "bg-gray-900 text-white"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                              "px-3 py-2 rounded-md text-sm font-medium"
-                            )}
-                            aria-current={item.current ? "page" : undefined}
+                            className={({ isActive }) =>
+                              isActive
+                                ? "px-3 py-2 rounded-md text-sm font-medium bg-gray-900 text-white"
+                                : "px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                            }
                           >
                             {item.name}
                           </NavLink>
@@ -104,16 +102,28 @@ export default function Header() {
                       as="a"
                       href={item.href}
                       className={classNames(
-                        item.current
+                        false
                           ? "bg-gray-900 text-white"
                           : "text-gray-300 hover:bg-gray-700 hover:text-white",
                         "block px-3 py-2 rounded-md text-base font-medium"
                       )}
-                      aria-current={item.current ? "page" : undefined}
                     >
                       {item.name}
                     </Disclosure.Button>
                   ))}
+                  <a
+                    href="https://github.com/jmalfano"
+                    target="_blank"
+                    rel="noreferrer"
+                    className={classNames(
+                      false
+                        ? "bg-gray-900 text-white"
+                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                      "block px-3 py-2 rounded-md text-base font-medium"
+                    )}
+                  >
+                    GitHub
+                  </a>
                 </div>
               </Disclosure.Panel>
             </>
@@ -122,7 +132,7 @@ export default function Header() {
 
         <header className="bg-white shadow">
           <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+            <h1 className="text-3xl  text-gray-900"> Inicio </h1>
           </div>
         </header>
       </div>

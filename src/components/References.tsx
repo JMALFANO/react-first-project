@@ -67,7 +67,7 @@ export default function References() {
                             type="text"
                             name="name"
                             autoComplete="given-name"
-                            className="h-8 mt-1.5 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="p-2 h-8 mt-1.5 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
                           <ErrorMessage
                             name="name"
@@ -104,7 +104,7 @@ export default function References() {
                         <div className="col-span-6">
                           <label
                             htmlFor="message"
-                            className="block text-sm font-medium text-gray-700"
+                            className="p-1block text-sm font-medium text-gray-700"
                           >
                             Comentario
                           </label>
@@ -112,7 +112,7 @@ export default function References() {
                             as="textarea"
                             name="message"
                             placeholder="Ingrese su mensaje, intente ser lo más claro posible."
-                            className="h-8 p-1.5 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="p-2 h-8 p-1.5 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
                           <ErrorMessage
                             name="message"
@@ -134,7 +134,7 @@ export default function References() {
                       <input
                         type="submit"
                         value="Enviar"
-                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-400 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       />
                     </div>
                   </div>
@@ -155,7 +155,7 @@ export default function References() {
           listReferences.map((contact: any) => {
             return (
               <article
-                className="w-2/5
+                className="w-2/5 mb-1
                bg-gray-100 rounded-lg p-2"
                 key={contact.id}
               >
