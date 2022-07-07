@@ -50,10 +50,10 @@ export default function References() {
         {({ errors }) => (
           <Form className="form">
             <h2 className="mb-3 font-bold"> Referencias </h2>
-            <div className="mt-10 sm:mt-0">
+            <div className="sm:mt-0">
               <div className="md:grid md:grid-cols-3 md:gap-6">
                 <div className=" mt-5 md:mt-0 md:col-span-2">
-                  <div className="w-3/4 first-letter:shadow overflow-hidden sm:rounded-md">
+                  <div className="md:w-3/4 first-letter:shadow overflow-hidden sm:rounded-md">
                     <div className="px-4 py-5 bg-gray-100 sm:p-6">
                       <div className="grid grid-cols-6 gap-6">
                         <div className="col-span-6 sm:col-span-3">
@@ -111,7 +111,7 @@ export default function References() {
                           <Field
                             as="textarea"
                             name="message"
-                            placeholder="Ingrese su mensaje, intente ser lo más claro posible."
+                            placeholder="Intente ser lo más claro posible"
                             className="p-2 h-8 p-1.5 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
                           <ErrorMessage
@@ -155,7 +155,7 @@ export default function References() {
           listReferences.map((contact: any) => {
             return (
               <article
-                className="w-2/5 mb-1
+                className="md:w-2/4 mb-1
                bg-gray-100 rounded-lg p-2"
                 key={contact.id}
               >

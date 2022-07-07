@@ -31,7 +31,7 @@ export default function Header() {
           {({ open }) => (
             <>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-center h-16">
+                <div className="flex items-center justify-between md:justify-center h-16">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <img
@@ -130,7 +130,7 @@ export default function Header() {
           )}
         </Disclosure>
 
-        <header className="bg-white shadow">
+        <header className="bg-white shadow md:text-start text-center">
           <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl  text-gray-900"> Inicio </h1>
           </div>

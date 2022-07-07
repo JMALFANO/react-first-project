@@ -34,7 +34,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="mt-8 md:mt-0 md:order-1">
-          <p className="text-center text-base text-gray-400">
+          <p className="text-center text-sm  text-gray-400 sm:text-base">
             &copy; 2022 - Desarrollado por <strong>Juan Martín ALFANO</strong>.
           </p>
         </div>

@@ -12,21 +12,15 @@ export const AppRoute = () => {
     <BrowserRouter>
       <Header />
 
-      <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/references" element={<References />} />
-            <Route path="contact" element={<Contact />} />
-            <Route
-              path="*"
-              element={<NotFound/>}
-            />
-          </Routes>
-        </div>
+      <main className="max-w-7xl mx-auto p-6 lg:px-8">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/references" element={<References />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
-
       <Footer />
     </BrowserRouter>
   );
