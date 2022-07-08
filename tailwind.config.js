@@ -1,4 +1,5 @@
 const { scryRenderedComponentsWithType } = require("react-dom/test-utils");
+const colors = require('tailwindcss/colors')
 
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require("tailwindcss/defaultTheme");
@@ -11,7 +12,15 @@ module.exports = {
         xs: "475px",
         ...defaultTheme.screens,
       },
+      colors: {
+        sky: colors.sky,
+        teal: colors.teal,
+        rose: colors.rose,
+      },
     },
   },
   plugins: [],
 };
+
+
+

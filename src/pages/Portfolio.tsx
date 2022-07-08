@@ -1,10 +1,10 @@
 import React from "react";
+import FeaturePortfolio from "../features/Portfolio";
 
 export const Portfolio = () => {
   return (
     <>
-      <h2 className="font-bold">Ultimos desarrollos realizados</h2>
-      <img src="/images/portfolio.png" alt="portfolio"></img>
+      <FeaturePortfolio />
     </>
   );
 };
