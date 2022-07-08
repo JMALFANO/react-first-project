@@ -1,53 +1,62 @@
+import { saveLocalStorage } from "../../helpers/helper";
+import * as Yup from "yup";
+import { Form, TextField, Listbox } from "../../components/forms";
 
-import React, { useState } from "react";
+const ContactSchema = Yup.object().shape({
+  name: Yup.string().required("El nombre es requerido"),
+  mail: Yup.string().required("El mail es requerido"),
+  reference: Yup.object().required("El motivo de contacto es requerido"),
+  message: Yup.string().required("El comentario es requerido"),
+});
 
-import { saveLocalStorage, readLocalStorage } from "../../helpers/helper";
+type References = {
+  id: number;
+  name: string;
+};
 
-import { Form, Field, ErrorMessage, Formik } from "formik";
+export default function FeatureContact(props: any) {
+  const handleSubmitData = (valueForm: any) => {
+    valueForm.id = new Date().getTime();
+    props.setLstState((elem:any) => {
+      return [...elem, valueForm];
+    });
 
-export default function FeatureContact() {
-    const [formSuccess, setFormSuccess] = useState(false);
+    saveLocalStorage("contact", valueForm);
+  };
 
-    const handleSubmitData = (reference: any) => {
-      saveLocalStorage("contact", reference);
-    };
+  let references: References[] | undefined = [
+    {
+      id: 0,
+      name: "Propuesta laboral",
+    },
+    {
+      id: 1,
+      name: "Comentarios",
+    },
+    {
+      id: 2,
+      name: "Ayuda",
+    },
+    {
+      id: 3,
+      name: "Otro",
+    },
+  ];
 
-    return <>
-    initialValues={{
-      id: new Date().getTime(),
-      name: "",
-      mail: "",
-      reference: "job",
-      message: "",
-    }}
-    validate={(values) => {
-      let errors: any = {};
-
-      if (!values.name) {
-        errors.name = "El nombre es requerido";
-      }
-      if (!values.mail) {
-        errors.mail = "El mail es requerido";
-      }
-      if (!values.reference) {
-        errors.reference = "Seleccione un motivo de contacto";
-      }
-      if (values.message.length < 10) {
-        errors.message = "El mensaje debe tener al menos 10 caracteres";
-      }
-
-      return errors;
-    }}
-    onSubmit={(values: any, { resetForm }) => {
-      console.log("values del form: " + JSON.stringify(values));
-      handleSubmitData(values);
-      setFormSuccess(true);
-      resetForm(); // resetea el formulario
-      setTimeout(() => setFormSuccess(false), 2500);
-    }}
-  >
-    {({ errors }) => (
-      <Form className="form">
+  return (
+    <>
+      <Form
+        className="form"
+        onSubmit={handleSubmitData}
+        initialValues={{
+          id: "",
+          name: "",
+          mail: "",
+          reference: references?.[0],
+          message: "",
+        }}
+        validationSchema={ContactSchema}
+      >
         <h2 className="mb-3 font-bold"> Contacto </h2>
         <div className="sm:mt-0">
           <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -62,18 +71,10 @@ export default function FeatureContact() {
                       >
                         Nombre
                       </label>
-                      <Field
+                      <TextField
                         type="text"
-                        name="name"
-                        className="p-2 h-8 mt-1.5 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                      <ErrorMessage
-                        name="name"
-                        component={() => (
-                          <div className="mt-1 text-red-500 text-xs">
-                            {errors.name}
-                          </div>
-                        )}
+                        name="name"                 
+                        className="p-2 h-12 mt-1 rounded-md border-2 border-gray-300 block w-full shadow-sm sm:text-sm focus:border-indigo-200 focus:outline-none"                        
                       />
                     </div>
 
@@ -84,41 +85,30 @@ export default function FeatureContact() {
                       >
                         Mail
                       </label>
-                      <Field
+                      <TextField
                         type="mail"
                         name="mail"
-                        className="p-2 h-8 mt-1.5 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                      <ErrorMessage
-                        name="mail"
-                        component={() => (
-                          <div className="mt-1 text-red-500 text-xs">
-                            {errors.mail}
-                          </div>
-                        )}
+                        className="p-2 h-12 mt-1 rounded-md border-2 border-gray-300 block w-full shadow-sm sm:text-sm focus:border-indigo-200 focus:outline-none"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3">
                       <label className="block text-sm font-medium text-gray-700">
                         Motivo de contacto
                       </label>
-                      <Field
-                        as="select"
-                        name="reference"
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      >
-                        <option value="job">Oportunidad laboral</option>
-                        <option value="help">Ayuda</option>
-                        <option value="other">Otro</option>
-                      </Field>
-                      <ErrorMessage
-                        name="reference"
-                        component={() => (
-                          <div className="mt-1 text-red-500 text-xs">
-                            {errors.reference}
-                          </div>
-                        )}
-                      />
+
+                      <Listbox name="reference">
+                      <Listbox.Button>{"Seleccione una opción"}</Listbox.Button>
+                        <Listbox.Options>
+                          {references?.map((reference) => (
+                            <Listbox.Option
+                              key={reference.id}
+                              value={reference}
+                            >
+                              {reference.name}
+                            </Listbox.Option>
+                          ))}
+                        </Listbox.Options>
+                      </Listbox>
                     </div>
 
                     <div className="col-span-6">
@@ -128,33 +118,20 @@ export default function FeatureContact() {
                       >
                         Comentario
                       </label>
-                      <Field
+                      <TextField
                         as="textarea"
                         name="message"
                         placeholder="Intente ser lo más claro posible"
-                        className="h-8 p-1.5 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                      <ErrorMessage
-                        name="message"
-                        component={() => (
-                          <div className="mt-1 text-red-500 text-xs">
-                            {errors.message}
-                          </div>
-                        )}
+                        className="p-2 h-12 mt-1 rounded-md border-2 border-gray-300 block w-full shadow-sm sm:text-sm focus:border-indigo-200 focus:outline-none"
                       />
                     </div>
                   </div>
                 </div>
                 <div className="px-4 py-3 bg-gray-100 text-right sm:px-6">
-                  {formSuccess && (
-                    <span className="mr-20 text-green-600 text-lg font-bold">
-                      ¡Formulario enviado con éxito!
-                    </span>
-                  )}
                   <input
                     type="submit"
                     value="Enviar"
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-400 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-400 hover:bg-gray-500 focus:outline-none focus:ring focus:ring-offset focus:ring-indigo-200"
                   />
                 </div>
               </div>
@@ -162,6 +139,6 @@ export default function FeatureContact() {
           </div>
         </div>
       </Form>
-    )}
-  </>
+    </>
+  );
 }
