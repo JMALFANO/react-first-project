@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Contact from "../components/Contact";
-import { Home } from "../components/Home";
+import Contact from "../pages/Contact";
+import { Home } from "../pages/Home";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import { Portfolio } from "../components/Portfolio";
-import References from "../components/References";
+import { Portfolio } from "../pages/Portfolio";
+import References from "../pages/References";
 import NotFound from "../components/NotFound";
 export const AppRoute = () => {
   return (

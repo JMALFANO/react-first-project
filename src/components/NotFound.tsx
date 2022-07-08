@@ -1,4 +1,4 @@
-import Error  from "./icons/Error";
+import Error  from "./icons/IconError";
 export default function NotFound() {
   return (
     <div className="grid min-h-full place-items-center">

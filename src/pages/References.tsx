@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { saveLocalStorage, readLocalStorage } from "../helpers/helper";
 
 import { Form, Field, ErrorMessage, Formik } from "formik";
+import FeatureReferences from "../features/References";
 
 export default function References() {
   const [listReferences, setlistReferences] = useState([]);
@@ -17,6 +18,7 @@ export default function References() {
 
   return (
     <>
+    <FeatureReferences/>
       <Formik
         initialValues={{
           id: new Date().getTime(),
