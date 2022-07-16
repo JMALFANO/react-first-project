@@ -1,6 +1,8 @@
 import { saveLocalStorage } from "../../helpers/helper";
 import * as Yup from "yup";
 import { Form, TextField, Listbox } from "../../components/forms";
+import toast, { Toaster } from "react-hot-toast";
+import { useState } from "react";
 
 const ReferenceSchema = Yup.object().shape({
   name: Yup.string().required("El nombre es requerido"),
@@ -14,10 +16,14 @@ type References = {
 };
 
 export default function FeatureReferences(props: any) {
-  const handleSubmitData = (valueForm: any) => {
+  const [selectReference, setSelectReference] = useState<string>(
+    "Seleccione una opción"
+  );
 
+  const handleSubmitData = (valueForm: any) => {
+    toast.success("¡Formulario enviado correctamente!");
     valueForm.id = new Date().getTime();
-    props.setLstState((elem:any) => {
+    props.setLstState((elem: any) => {
       return [...elem, valueForm];
     });
 
@@ -41,6 +47,9 @@ export default function FeatureReferences(props: any) {
 
   return (
     <>
+      <div>
+        <Toaster position="top-center" reverseOrder={false} />
+      </div>
       <Form
         className="form"
         onSubmit={handleSubmitData}
@@ -79,8 +88,13 @@ export default function FeatureReferences(props: any) {
                         Referencia
                       </label>
 
-                      <Listbox name="reference">
-                        <Listbox.Button>{"Seleccione una opción"}</Listbox.Button>
+                      <Listbox
+                        name="reference"
+                        onChange={(value: any) => {
+                          setSelectReference(value?.name);
+                        }}
+                      >
+                        <Listbox.Button>{selectReference}</Listbox.Button>
                         <Listbox.Options>
                           {references?.map((reference) => (
                             <Listbox.Option

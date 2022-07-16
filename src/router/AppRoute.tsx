@@ -1,4 +1,4 @@
-import React from "react";
+import { useContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Contact from "../pages/Contact";
 import { Home } from "../pages/Home";
@@ -7,11 +7,11 @@ import Footer from "../components/layout/Footer";
 import { Portfolio } from "../pages/Portfolio";
 import References from "../pages/References";
 import NotFound from "../components/NotFound";
+
 export const AppRoute = () => {
   return (
     <BrowserRouter>
       <Header />
-
       <main className="max-w-7xl mx-auto p-6 lg:px-8">
         <Routes>
           <Route path="/" element={<Home />} />

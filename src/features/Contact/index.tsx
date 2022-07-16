@@ -1,6 +1,8 @@
 import { saveLocalStorage } from "../../helpers/helper";
 import * as Yup from "yup";
 import { Form, TextField, Listbox } from "../../components/forms";
+import toast, { Toaster } from "react-hot-toast";
+import { useState } from "react";
 
 const ContactSchema = Yup.object().shape({
   name: Yup.string().required("El nombre es requerido"),
@@ -15,9 +17,14 @@ type References = {
 };
 
 export default function FeatureContact(props: any) {
+  const [selectReference, setSelectReference] = useState<string>(
+    "Seleccione una opción"
+  );
+
   const handleSubmitData = (valueForm: any) => {
+    toast.success("¡Formulario enviado correctamente!");
     valueForm.id = new Date().getTime();
-    props.setLstState((elem:any) => {
+    props.setLstState((elem: any) => {
       return [...elem, valueForm];
     });
 
@@ -45,6 +52,9 @@ export default function FeatureContact(props: any) {
 
   return (
     <>
+      <div>
+        <Toaster position="top-center" reverseOrder={false} />
+      </div>
       <Form
         className="form"
         onSubmit={handleSubmitData}
@@ -73,8 +83,8 @@ export default function FeatureContact(props: any) {
                       </label>
                       <TextField
                         type="text"
-                        name="name"                 
-                        className="p-2 h-12 mt-1 rounded-md border-2 border-gray-300 block w-full shadow-sm sm:text-sm focus:border-indigo-200 focus:outline-none"                        
+                        name="name"
+                        className="p-2 h-12 mt-1 rounded-md border-2 border-gray-300 block w-full shadow-sm sm:text-sm focus:border-indigo-200 focus:outline-none"
                       />
                     </div>
 
@@ -96,8 +106,13 @@ export default function FeatureContact(props: any) {
                         Motivo de contacto
                       </label>
 
-                      <Listbox name="reference">
-                      <Listbox.Button>{"Seleccione una opción"}</Listbox.Button>
+                      <Listbox
+                        name="reference"
+                        onChange={(value: any) => {
+                          setSelectReference(value?.name);
+                        }}
+                      >
+                        <Listbox.Button>{selectReference}</Listbox.Button>
                         <Listbox.Options>
                           {references?.map((reference) => (
                             <Listbox.Option

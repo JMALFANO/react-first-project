@@ -59,8 +59,8 @@ const actions = [
   },
   {
     title: "Otros desarrollos",
-    text: "Para ver otros desarrollos visita mi repositorio.", 
-    stack: "Node.js, .NET Core, Angular, React, Vue, etc",
+    text: "Para ver otros desarrollos visita mi repositorio.",
+    stack: "Node.js, .NET Core, Angular, React, Vue",
     href: "https://github.com/JMALFANO",
     icon: BadgeCheckIcon,
     iconForeground: "text-yellow-700",
@@ -112,7 +112,9 @@ export default function FeaturePortfolio() {
               </h3>
               <p className="mt-3 mb-3 text-sm text-gray-500">{action.text}</p>
 
-              <span className="text-sm p-1 text-white  bg-indigo-400 rounded-lg">{action.stack}</span>
+              <span className="text-sm p-1 text-white  bg-indigo-400 rounded-lg">
+                {action.stack}
+              </span>
             </div>
             <span
               className="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400"

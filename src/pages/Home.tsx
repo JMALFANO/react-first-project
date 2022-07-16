@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { Context } from "../context/Context";
+
 export const Home = () => {
+  const { setPage } = useContext(Context);
+  setPage("Inicio");
+
   return (
     <div className="my-16">
       <p className="md:text-3xl">

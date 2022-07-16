@@ -1,8 +1,8 @@
-/* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { Context } from "./../../context/Context";
 
 const navigation = [
   { name: "Inicio", href: "/" },
@@ -16,16 +16,10 @@ function classNames(...classes: any) {
 }
 
 export default function Header() {
+  const { page } = useContext(Context);
+
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
@@ -132,7 +126,7 @@ export default function Header() {
 
         <header className="bg-white shadow md:text-start text-center">
           <div className="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl  text-gray-900"> Inicio </h1>
+            <h1 className="text-3xl  text-gray-900"> {page} </h1>
           </div>
         </header>
       </div>
