@@ -24,15 +24,15 @@ export const Home = () => {
       </p>
       <p className="text-lg">
         <span className="font-bold text-xl">Conocimientos</span>
-        <ul>
-          <li>-ASP.NET MVC, .NET Framework, .NET Core.</li>
-          <li>-Angular, Node.js.</li>
-          <li>-TypeScript, JavaScript.</li>
-          <li>-SQL, Oracle SQL & MySQL.</li>
-          <li>-Git & TFS.</li>
-          <li>-IoT.</li>
-        </ul>
       </p>
+      <ul>
+        <li>-ASP.NET MVC, .NET Framework, .NET Core.</li>
+        <li>-Angular, Node.js.</li>
+        <li>-TypeScript, JavaScript.</li>
+        <li>-SQL, Oracle SQL & MySQL.</li>
+        <li>-Git & TFS.</li>
+        <li>-IoT.</li>
+      </ul>
     </div>
   );
 };

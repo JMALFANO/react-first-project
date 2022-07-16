@@ -62,7 +62,6 @@ export default function FeatureReferences(props: any) {
         }}
         validationSchema={ReferenceSchema}
       >
-        <h2 className="mb-3 font-bold">Referencia</h2>
         <div className="sm:mt-0">
           <div className="md:grid md:grid-cols-3 md:gap-6">
             <div className=" mt-5 md:mt-0 md:col-span-2">
